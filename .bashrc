@@ -221,4 +221,4 @@ eval "$(zoxide init bash)"
 
 # modules a installer sur une nouvell config : neofetch (remplacer par nitch), ncdu, lsd, nvim, git
 # hollywood (inutile mais classe)
-alias config='/usr/bin/git --git-dir=/home/tysufa/.cfg/ --work-tree=/home/tysufa'
+alias config='/usr/bin/git --git-dir=/home/tysufa/.dotfiles/ --work-tree=/home/tysufa'
