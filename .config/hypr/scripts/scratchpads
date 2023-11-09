@@ -10,11 +10,12 @@ hyprctl clients -j | jq ".[] | select(.workspace.name == \"special:$1\" )"
 toggle_scratchpad(){
     workspace_name="$1"
     cmd="$2"
+    echo $3
 
     windows=$( windows_in "$workspace_name" ) # récupere le résultat de windows_in
     # If not on latest , check the edit history of this post
     if [ -z "$windows" ];then # si la fenetre n'existe pas encore : 
-        hyprctl dispatch "exec [workspace special:$workspace_name; animation popup; opaque; noborder] $cmd" # on lance kitty dans le worskpace concerné
+        hyprctl dispatch "exec [workspace special:$workspace_name; animation popup; opaque; noborder; $3] $cmd" # on lance kitty dans le worskpace concerné
         sleep 0.25
         hyprctl reload
         # hyprctl dispatch togglespecialworkspace "$workspace_name" # on toggle le worskpace concerné
@@ -29,4 +30,10 @@ elif [ "$1" = "music_player" ];then
     toggle_scratchpad "music_player" "mpv ~/music"
 elif [ "$1" = "file_manager" ];then
     toggle_scratchpad "file_manager" "thunar"
+elif [ "$1" = "calendar" ];then
+    toggle_scratchpad "calendar" "thunderbird --calendar"
+elif [ "$1" = "cpu" ];then
+    toggle_scratchpad "cpu" "kitty 'btop'" "size 1000 720; move 13% 55"
+
+
 fi

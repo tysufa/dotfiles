@@ -163,6 +163,7 @@ alias gs="git satus"
 alias ga="git add"
 alias gaa="git add -all"
 alias gc="git commit -m"
+alias gcl="git clone "
 
 #other aliases
 alias ..="cd .."

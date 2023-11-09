@@ -1,0 +1,164 @@
+{
+     "layer": "top",
+     "position": "top",
+     "margin-top": 3,
+     "margin-left": 10,
+     "margin-right": 10,
+    "height": 0,
+    "spacing": 0,
+    "modules-left": ["custom/launcher","cpu"],
+    "modules-center": ["hyprland/workspaces","custom/song_name","custom/pre","custom/spotify","custom/next"],
+    "modules-right": ["tray","backlight", "pulseaudio","battery","clock","custom/powermenu"],
+
+"hyprland/workspaces": {
+	"on-click": "activate",
+	"format": "{icon}",
+	"format-icons": {
+		"default": "",
+		"1": "",
+		"2": "",
+		"3": "",
+		"4": "",
+		"active": "󱓻",
+		"urgent": "󱓻",
+	},
+	"persistent_workspaces": {
+		"*": 4,
+	}
+    }, "memory": {
+    "interval": 3,
+    "format": "   {}% ",
+    "max-length": 10
+    },
+    "cpu": {
+    "interval": 1,
+    "format": "   {}% ",
+    "max-length": 10,
+    "on-click-right": "exec ~/.config/hypr/scripts/scratchpads cpu",
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+
+    "battery": {
+        "interval":3,
+        "states": {
+            "good": 80,
+            "warning": 35,
+            "critical": 20
+        },
+        "format": "{icon}",
+        "format-charging": " {capacity}%",
+        "format-charging-alt": " ",
+        "format-charging-alt-click": "click-right",
+        "format-plugged": " {capacity}%",
+        "format-plugged-alt": " ",
+        "format-alt-click": "click-right",
+        "format-alt": "{icon} {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "nospacing":1
+    },
+
+    "clock": {
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "format-alt": "  {:%a, %d %b %Y} ",
+        "format-alt-click": "click-left",
+        "on-click-right": "exec /home/tysufa/.config/hypr/scripts/scratchpads calendar",
+        "format": "   {:%H:%M} ",
+        "calendar": {
+                    "weeks-pos"     : "none",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#8fbcbb'><b>{}</b></span>",
+                              "days":       "<span color='#8a909e'>{}</span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#81a1c1'><b>{}</b></span>",
+                              "today":      "<span color='#88c0d0'><b>{}</b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-forward": "tz_up",
+                    "on-click-backward": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} ",
+        "format-icons": ["󰹐", "󰌶", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩔", "󱩕", "󱩖", "󰛨"],
+	"tooltip-format": "Brightness : {percent}%",
+        "on-scroll-up": "lightctl up",
+        "on-scroll-down": "lightctl down",
+    },
+
+    "network": {
+        "format-wifi": "{icon}",
+        "format-disconnected": "󰤭 ",
+        "format-icons": ["󰤯 ","󰤟 ","󰤢 ","󰤥 ","󰤨 "],
+	"tooltip-format-wifi": "{essid}",
+        "tooltip-format-disconnected": "Disconnected",
+	"nospacing": 1,
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+	"nospacing": 1,
+	"tooltip-format": "Volume : {volume}%",
+        "format-muted": "󰝟 ",
+        "format-icons": {
+            "headphone": " ",
+            "default": ["󰕿 ", "󰖀 ", "󰕾 "]
+        },
+        "on-click": "pamixer -t",
+	"on-click-right": "pavucontrol",
+        "on-scroll-up": "volumectl up",
+        "on-scroll-down": "volumectl down",
+	// "nospacing": 1,
+    },
+    "custom/launcher": {
+	"format": "  ",
+	"tooltip": false,
+	"on-click": "wofi"
+    },
+    "custom/next": {
+        "exec": "python3 ~/.config/waybar/scripts/next.py --player spotify",
+	"format": "{}",
+	"tooltip": false,
+	"on-click": "playerctl next",
+        "return-type": "json",
+    },
+    "custom/pre": {
+        "exec": "python3 ~/.config/waybar/scripts/pre.py --player spotify",
+	"format": "{}",
+	"tooltip": false,
+	"on-click": "playerctl previous",
+        "return-type": "json",
+    },
+    "custom/powermenu": {
+	"format": "⏻ ",
+	"tooltip": false,
+        "on-click": "sh -c '(sleep 0.5s; wlogout --protocol layer-shell)' & disown",
+    },
+    "custom/ibus": {
+	"format": "{}",
+	"exec": "/home/tdm/.config/waybar/scripts/input.sh &",
+	"interval": 1,
+	"tooltip": false,
+	"tooltip-format": "{}",
+	"on-click": "/home/tdm/.config/waybar/scripts/ibus.sh &",
+    },
+   "custom/spotify": {
+        "exec": "python3 ~/.config/waybar/scripts/mediaplayer.py --player spotify",
+        "format": "{}",
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+    },
+   "custom/song_name": {
+        "exec": "python3 ~/.config/waybar/scripts/spotify.py --player spotify",
+        "format": "{}",
+        "return-type": "json",
+    },
+}
+
