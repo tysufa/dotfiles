@@ -168,6 +168,9 @@ alias gcl="git clone "
 #other aliases
 alias ..="cd .."
 alias ...="cd ../.."
+alias cpp="cd ~/programmation/cpp"
+alias py="cd ~/programmation/python"
+alias sql="cd ~/programmation/sql"
 
 alias c="clear"
 function h () {
