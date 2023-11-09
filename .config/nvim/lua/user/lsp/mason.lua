@@ -47,7 +47,8 @@ if not lspconfig_status_ok then
 end
 
 local function cpp_keymaps()
-    vim.keymap.set("n", "<leader>arbre", "iusing el = int;<CR><CR>struct noeud{<CR>el val;<CR>noeud * sag;<CR>noeud * sad;<CR>};<CR><CR>using arbre = noeud *;", {buffer=0, desc="create tree struct"})
+    vim.keymap.set("n", "<leader>abr", "iusing el = int;<CR><CR>struct noeud{<CR>el val;<CR>noeud * sag;<CR>noeud * sad;<CR>};<CR><CR>using arbre = noeud *;", {buffer=0, desc="create tree struct"})
+    vim.keymap.set("n", "<leader>abrad", "ivoid ajouter(el e, arbre & A){<CR>if (A != nullptr){ <CR>if (e > A -> val){ <CR>ajouter(e, A -> sad);<CR>}<CR>else{<CR>ajouter(e, A -> sag);<CR>}<CR>}<CR>else{<CR>A = new noeud;<CR>A -> val = e;<CR>}<CR>}", {buffer=0, desc="create tree struct"})
 
     vim.keymap.set("n", "<leader>at", "ivoid affiche_tableau(std::array<,> tab){<CR>std::cout<<\"[\";<CR>for(int i = 0; i < tab.size()-1; i++){std::cout<<tab[i]<<\", \";}<CR>std::cout<<tab[tab.size()-1]<<\"]\"<<std::endl;}<esc><UP><UP><UP>bbbli", {buffer=0, desc="afficher un tableau"})
 
@@ -61,7 +62,7 @@ local function cpp_keymaps()
     })
     local test = function ()
         vim.cmd("write")
-        require('toggleterm').exec("g++ "..vim.fn.expand("%") .. " -o " .. vim.fn.expand("%:r") .. ".out && ./" .. vim.fn.expand("%:r") .. ".out")
+        require('toggleterm').exec("clear; g++ "..vim.fn.expand("%") .. " -o " .. vim.fn.expand("%:r") .. ".out && ./" .. vim.fn.expand("%:r") .. ".out")
     end
     vim.keymap.set("n", "<leader>gp", test, {buffer=0, desc="compile and run"})
     -- vim.keymap.set("n", "<leader>gp", "<cmd>w<CR><C-p>run '%:r'", {buffer=0, silent=true, desc="compile and run program"})
