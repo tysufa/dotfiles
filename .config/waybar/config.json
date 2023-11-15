@@ -50,11 +50,9 @@
         },
         "format": "{icon}",
         "format-charging": " {capacity}%",
-        "format-charging-alt": " ",
-        "format-charging-alt-click": "click-right",
         "format-plugged": " {capacity}%",
         "format-plugged-alt": " ",
-        "format-alt-click": "click-right",
+        "format-alt-click": "click-left",
         "format-alt": "{icon} {capacity}%",
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "nospacing":1
@@ -120,7 +118,7 @@
     "custom/launcher": {
 	"format": "  ",
 	"tooltip": false,
-	"on-click": "wofi"
+	"on-click": "sh ~/.config/rofi/scripts/launcher_t2",
     },
     "custom/next": {
         "exec": "python3 ~/.config/waybar/scripts/next.py --player spotify",
