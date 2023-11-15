@@ -181,6 +181,7 @@ function conf () {
     cd ~/.config/$1
 }
 alias hi="history"
+alias v="nvim"
 alias tree="tree --dirsfirst -F"
 alias mkdir="mkdir -p -v"
 
