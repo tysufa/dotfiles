@@ -159,11 +159,11 @@ alias lt='ls --tree'
 alias cat="bat"
 
 # git aliases
-alias gs="git satus"
+alias gs="git status"
 alias ga="git add"
-alias gaa="git add -all"
+alias gaa="git add --all"
 alias gc="git commit -m"
-alias gcl="git clone "
+alias gcl="git clone"
 
 #other aliases
 alias ..="cd .."

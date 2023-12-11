@@ -31,8 +31,8 @@
     "max-length": 10
     },
     "cpu": {
-    "interval": 1,
-    "format": "   {}% ",
+    "interval": 2,
+    "format": "   {usage}% ",
     "max-length": 10,
     "on-click-right": "exec ~/.config/hypr/scripts/scratchpads cpu",
     },

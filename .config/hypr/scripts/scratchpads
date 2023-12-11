@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # Inferno LP 2023-08-28
-
+echo "test"
 windows_in(){ # vérifie si le special workspace existe
 # -j : json output .[] : parcours chaque fenetre, renvoie le json de la fenetre si elle existe sinon une chaine vide
 hyprctl clients -j | jq ".[] | select(.workspace.name == \"special:$1\" )"
