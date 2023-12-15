@@ -6,8 +6,7 @@ export VISUALT=nvim
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+    *i*) ;; *) return;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -164,6 +163,8 @@ alias ga="git add"
 alias gaa="git add --all"
 alias gc="git commit -m"
 alias gcl="git clone"
+alias gp="pass -c programmation/github && git push"
+alias gt="pass -c programmation/github" #git token
 
 #other aliases
 alias ..="cd .."
@@ -222,8 +223,11 @@ function git_init() {
 
 nitch
 eval "$(starship init bash)" #nécessaire pour faire fonctionner starship (qui permet d'avoir un meilleur prompt)
-eval "$(zoxide init bash)"
+eval "$(zoxide init bash)" #permet de jump dans les dossiers les plus utilisés sans taper le chemin complet
 
 # modules a installer sur une nouvell config : neofetch (remplacer par nitch), ncdu, lsd, nvim, git
 # hollywood (inutile mais classe)
 alias config='/usr/bin/git --git-dir=/home/tysufa/.dotfiles/ --work-tree=/home/tysufa'
+
+# completion pour password store (ne marche pas de base sur arch)
+source pass.bash-completion
