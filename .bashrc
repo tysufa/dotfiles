@@ -173,7 +173,10 @@ alias cpp="cd ~/programmation/cpp"
 alias py="cd ~/programmation/python"
 alias sql="cd ~/programmation/sql"
 
+alias pwdc="pwd | wl-copy" #copy pwd to clipboard
+
 alias c="clear"
+
 function h () {
     cd /home/tysufa/$1
 }
@@ -230,4 +233,4 @@ eval "$(zoxide init bash)" #permet de jump dans les dossiers les plus utilisés 
 alias config='/usr/bin/git --git-dir=/home/tysufa/.dotfiles/ --work-tree=/home/tysufa'
 
 # completion pour password store (ne marche pas de base sur arch)
-source pass.bash-completion
+source ~/.pass.bash-completion
