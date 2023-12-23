@@ -145,7 +145,7 @@ clr='\[\033[00m\]'      # Reset
 HISTTIMEFORMAT="%F %T " #set history time format 
 HISTCONTROL=ignoredups # ignore duplicates in history
 
-set -o vi # enable vim commands for commands line
+# set -o vi # enable vim commands for commands line
 
 #ls aliases you need to download lsd
 alias ls="lsd"
@@ -172,6 +172,7 @@ alias ...="cd ../.."
 alias cpp="cd ~/programmation/cpp"
 alias py="cd ~/programmation/python"
 alias sql="cd ~/programmation/sql"
+alias bash="cd ~/programmation/bash"
 
 alias pwdc="pwd | wl-copy" #copy pwd to clipboard
 
@@ -187,7 +188,11 @@ function conf () {
 alias hi="history"
 alias v="nvim"
 alias tree="tree --dirsfirst -F"
-alias mkdir="mkdir -p -v"
+alias x="chmod +x"
+function mcd () {
+	mkdir $1
+	cd $1
+}
 
 # View the calender by typing the first three letters of the month.
 alias jan='cal -m 01'
